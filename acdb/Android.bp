@@ -1,5 +1,8 @@
 cc_library_shared {
     name: "libar-acdb",
+    defaults: [
+        "android_hardware_qtiaudio_config_defaults",
+    ],
     owner: "qti",
     vendor: true,
 
@@ -42,6 +45,9 @@ cc_library_shared {
 
 cc_library_shared {
     name: "libats",
+    defaults: [
+        "android_hardware_qtiaudio_config_defaults",
+    ],
     owner: "qti",
     vendor: true,
 
