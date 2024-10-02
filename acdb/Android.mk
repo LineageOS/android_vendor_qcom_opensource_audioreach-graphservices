@@ -78,6 +78,8 @@ ifeq ($(strip $(AUDIO_FEATURE_ENABLED_MCS)),true)
 	LOCAL_CFLAGS += -DMCS_ENABLED
 endif
 
+LOCAL_CFLAGS += -DATS_USES_DUMMY_DIAG
+
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/ats/inc \
     $(LOCAL_PATH)/ats/rtc/common/inc \
@@ -87,6 +89,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/ats/fts/common/inc/ \
     $(LOCAL_PATH)/ats/transports/diag/linux/actp/inc/ \
     $(LOCAL_PATH)/ats/transports/diag/linux/audtp/inc/ \
+    $(LOCAL_PATH)/ats/transports/diag/linux/inc \
     $(LOCAL_PATH)/ats/adie/common/inc \
     $(LOCAL_PATH)/ats/adie/common/api \
     $(LOCAL_PATH)/ats/api \
@@ -116,6 +119,8 @@ LOCAL_SRC_FILES := \
 
 LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/diag/include
 
+
+
 LOCAL_MODULE := libats
 LOCAL_MODULE_OWNER := qti
 LOCAL_MODULE_TAGS := optional
@@ -131,14 +136,12 @@ LOCAL_CFLAGS += \
 LOCAL_HEADER_LIBRARIES := \
     libcutils_headers \
     libutils_headers \
-    libdiag_headers \
     vendor_common_inc
 
 LOCAL_SHARED_LIBRARIES := \
     liblx-osal\
     libutils\
     libcutils \
-    libdiag \
     libar-gsl\
     libar-acdb
 
@@ -146,6 +149,8 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/ats/api
 LOCAL_EXPORT_C_INCLUDE_DIRS += $(LOCAL_PATH)/ats/inc
 LOCAL_EXPORT_C_INCLUDE_DIRS += $(LOCAL_PATH)/ats/adie/common/api
 LOCAL_EXPORT_C_INCLUDE_DIRS += $(LOCAL_PATH)/ats/mcs/common/api
+
+
 
 include $(BUILD_SHARED_LIBRARY)
 
