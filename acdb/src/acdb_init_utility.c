@@ -35,7 +35,7 @@ int32_t AcbdInitLoadInMemFile(const char_t* fname, ar_fhandle fhandle, acdb_buff
         return AR_EBADPARAM;
     }
 
-    int32_t status = ar_fmap(fhandle, &in_mem_file->buffer);
+    int32_t status = ar_fmap(fhandle, (const void **)&in_mem_file->buffer);
     if (AR_EUNSUPPORTED == status)
     {
         in_mem_file->buffer = (void*)ACDB_MALLOC(uint8_t, in_mem_file->size);
