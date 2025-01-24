@@ -5,6 +5,7 @@ cc_library_shared {
 
     cflags: [
         "-D_ANDROID_",
+        "-Wno-address-of-packed-member",
     ],
 
     srcs: [
@@ -49,6 +50,7 @@ cc_library_shared {
         "-D_ANDROID_",
         "-DAR_ATS_USE_CUTILS",
         "-DATS_USES_DUMMY_DIAG",
+        "-Wno-address-of-packed-member",
     ] + select(soong_config_variable("qtiaudio", "feature_mcs"), {
         "true": ["-DMCS_ENABLED"],
         default: [],
