@@ -340,7 +340,7 @@ ar_osal_servreg_t ar_osal_servreg_register(_In_ ar_osal_client_type  client_type
     _In_ ar_osal_servreg_entry_type *service)
 {
 #ifndef AR_OSAL_USE_PD_NOTIFIER
-    return 1;
+    return NULL;
 #else
     int32_t status = AR_EOK;
     //ar_osal_servreg_t* handle = NULL;
