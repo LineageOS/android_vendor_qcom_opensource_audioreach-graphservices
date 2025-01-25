@@ -2320,5 +2320,18 @@ struct param_id_sp_ex_rx_cps2_demo_param_t
 #include "spf_end_pack.h"
 ;
 
+#define PARAM_ID_SP_RX_CH_ENABLE 0x08001A69
+
+#include "spf_begin_pack.h"
+#include "spf_begin_pragma.h"
+struct param_id_sp_rx_ch_enable_t
+{
+    uint32_t num_ch;
+    int32_t chan_en_flag[0];
+}
+#include "spf_end_pragma.h"
+#include "spf_end_pack.h"
+;
+
 /** @} <-- End of the Module --> */
 #endif /* __SP_RX_H__ */
