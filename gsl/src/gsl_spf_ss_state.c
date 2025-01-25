@@ -183,8 +183,7 @@ static uint32_t gsl_servreg_setup(void)
 						domain_list + i, &service);
 		if (!servreg_handle) {
 			GSL_ERR("failed to register for service %c", rc);
-			rc = AR_EFAILED;
-			goto free_handle_list;
+			continue;
 		}
 
 		servreg_handle_list->handles[proc_id] = servreg_handle;
