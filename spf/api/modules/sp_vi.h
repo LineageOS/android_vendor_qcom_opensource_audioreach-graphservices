@@ -1474,6 +1474,19 @@ struct param_id_vi_output_bps_split_enable_t
    Constants
 ==============================================================================*/
 
+#define PARAM_ID_SP_VI_CH_ENABLE 0x08001A6A
+
+#include "spf_begin_pack.h"
+#include "spf_begin_pragma.h"
+struct param_id_sp_vi_ch_enable_t
+{
+    uint32_t num_ch;
+    int32_t chan_en_flag[0];
+}
+#include "spf_end_pragma.h"
+#include "spf_end_pack.h"
+;
+
 #define PARAM_ID_SPv5_VI_SPKR_DIAG_GETPKT_PARAM 0x08001539
 
 /*==============================================================================
