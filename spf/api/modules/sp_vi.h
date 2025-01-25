@@ -247,14 +247,14 @@ typedef struct param_id_sp_th_vi_r0t0_cfg_t param_id_sp_th_vi_r0t0_cfg_t;
 #include "spf_begin_pragma.h"
 struct param_id_sp_th_vi_r0t0_cfg_t
 {
-    uint32_t num_ch;
+    uint32_t num_speakers;
     /**< @h2xmle_description {Number of speaker channels}
          @h2xmle_rangeList   {"1"=1;"2"=2;"3"=3;"4"=4}
          @h2xmle_default     {2} */
 
-    vi_r0t0_cfg_t r0t0_cfg[0];
+    vi_r0t0_cfg_t vi_r0t0_cfg[0];
     /**< @h2xmle_description {Structure containing r0 and t0 variables for calibration}
-         @h2xmle_variableArraySize  {num_ch}*/
+         @h2xmle_variableArraySize  {num_speakers}*/
 }
 #include "spf_end_pragma.h"
 #include "spf_end_pack.h"
@@ -661,7 +661,7 @@ typedef struct vi_th_ftm_params_t vi_th_ftm_params_t;
 /** @h2xmlp_subStruct */
 struct vi_th_ftm_params_t
 {
-    int32_t ftm_rDC_q24;
+    int32_t ftm_dc_res_q24;
   /**< @h2xmle_description {resistance in ohm}
        @h2xmle_range       {0..2147483647}
        @h2xmle_dataFormat  {Q24}
@@ -1179,7 +1179,7 @@ typedef struct param_id_sp_ex_vi_mode_cfg_t param_id_sp_ex_vi_mode_cfg_t;
 #include "spf_begin_pragma.h"
 struct param_id_sp_ex_vi_mode_cfg_t
 {
-    uint32_t ex_FTM_mode_enable_flag;
+    uint32_t operation_mode;
     /**< @h2xmle_description {Factory Test Mode enablement flag. When enabled, the estimated spkr parameters are averaged
          and pushed out to HAL for parameter display and saving into audio.cal}
          @h2xmle_rangeList       {"disabled"=0; "enabled"=1}
@@ -1326,7 +1326,7 @@ struct param_id_sp_ex_vi_ftm_params_t
     @h2xmle_rangeList   {"1"=1;"2"=2;"3"=3;"4"=4}
     @h2xmle_default     {2} */
 
-    vi_ex_ftm_params_t fbsp_ex_vi_ftm_get_param[0];
+    vi_ex_ftm_params_t vi_ex_ftm_params[0];
     /**< @h2xmle_description {structure containing speaker params for FTM }
     @h2xmle_variableArraySize  {num_ch} */
 }
