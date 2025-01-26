@@ -78,6 +78,8 @@ ifeq ($(strip $(AUDIO_FEATURE_ENABLED_MCS)),true)
 	LOCAL_CFLAGS += -DMCS_ENABLED
 endif
 
+LOCAL_CFLAGS += -DATS_USES_DUMMY_DIAG
+
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/ats/inc \
     $(LOCAL_PATH)/ats/rtc/common/inc \
@@ -131,14 +133,12 @@ LOCAL_CFLAGS += \
 LOCAL_HEADER_LIBRARIES := \
     libcutils_headers \
     libutils_headers \
-    libdiag_headers \
     vendor_common_inc
 
 LOCAL_SHARED_LIBRARIES := \
     liblx-osal\
     libutils\
     libcutils \
-    libdiag \
     libar-gsl\
     libar-acdb
 
