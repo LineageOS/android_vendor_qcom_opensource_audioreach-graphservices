@@ -28,7 +28,6 @@ LOCAL_CFLAGS := $(osal-def)
 LOCAL_HEADER_LIBRARIES += audio_kernel_headers
 LOCAL_HEADER_LIBRARIES += libarosal_headers
 LOCAL_HEADER_LIBRARIES += qti_audio_kernel_uapi
-LOCAL_HEADER_LIBRARIES += libdiag_headers
 LOCAL_EXPORT_HEADER_LIBRARY_HEADERS := libarosal_headers
 
 include $(LIBION_HEADER_PATH_WRAPPER)
@@ -60,8 +59,7 @@ else
 LOCAL_SRC_FILES += src/linux/qcom/ar_osal_shmem_db.c
 endif
 
-LOCAL_SHARED_LIBRARIES := liblog \
-                          libdiag
+LOCAL_SHARED_LIBRARIES := liblog
 
 LOCAL_MODULE := liblx-osal
 LOCAL_MODULE_OWNER := qti
