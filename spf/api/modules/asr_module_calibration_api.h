@@ -239,7 +239,7 @@ typedef struct param_id_asr_output_config_t param_id_asr_output_config_t;
  ASR module.
  */
 
-typedef enum
+enum
 {
     NON_BUFFERED = 0,     /* Send ASR engine output immediately. Each buffer shall have one payload
                           corresponding to a partial/complete segment of speech.
