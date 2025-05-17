@@ -303,6 +303,60 @@ struct param_id_haptics_op_mode {
   ==============================================================================*/
 
 /* Unique Paramter id */
+#define PARAM_ID_HAPTICS_RX_PCMV_PLAYBACK 0x08001AE3
+
+/*==============================================================================
+   Type definitions
+==============================================================================*/
+
+/* Structure definition for Parameter */
+typedef struct param_id_haptics_rx_pcmv_playback param_id_haptics_rx_pcmv_playback;
+
+/** @h2xmlp_parameter   {"PARAM_ID_HAPTICS_RX_PCMV_PLAYBACK",
+                         PARAM_ID_HAPTICS_RX_PCMV_PLAYBACK}
+    @h2xmlp_description {PCMV Playback mode buffer ptr, size set param}
+    @h2xmlp_toolPolicy  {RTC_READONLY} */
+
+#include "spf_begin_pack.h"
+#include "spf_begin_pragma.h"
+struct param_id_haptics_rx_pcmv_playback {
+    uint32_t channel_mask;  // Mask to indicate to which channel(s) the buffer is being set, for mono set this to 1
+    /**< @h2xmle_description {Mask to indicate which channel(s) have a valid UPDATE command.}
+         @h2xmle_range       {0..0x02}
+
+         @h2xmle_bitField    {0x00000001}
+         @h2xmle_bitName     {"Channel 1"}
+         @h2xmle_description {Enabling this bit will indicate a valid PCMV Playback buffer set to Channel 1.}
+         @h2xmle_rangeList   {disabled=0;enabled=1}
+         @h2xmle_default     {1}
+         @h2xmle_bitFieldEnd
+
+         @h2xmle_bitField    {0x00000002}
+         @h2xmle_bitName     {"Channel 2"}
+         @h2xmle_description {Enabling this bit will indicate a valid PCMV Playback buffer set to Channel 2.}
+         @h2xmle_rangeList   {disabled=0;enabled=1}
+         @h2xmle_default     {0}
+         @h2xmle_bitFieldEnd */
+    int32_t buffer_size; // Buffer size in bytes
+    /**< @h2xmle_description {Length of the effect PCM buffer in bytes, (48kHz, 16-bit mono, Q15 format), Max duration supported is 10 sec}
+         @h2xmle_default     {0}
+         @h2xmle_range       {0x0..0x000EA600} */
+#ifdef __H2XML__
+    uint8_t buffer_ptr[0]; // PCMV Playback mode buffer pointer
+    /**< @h2xmle_description {Haptics PCMV playback data buffer. PCM data format: 48kHz, 16-bit mono, Q15 format)}
+         @h2xmle_elementType {rawData}
+         @h2xmle_displayType {stringField} */
+#endif
+}
+#include "spf_end_pragma.h"
+#include "spf_end_pack.h"
+;
+
+/*==============================================================================
+     Constants
+  ==============================================================================*/
+
+/* Unique Paramter id */
 #define PARAM_ID_HAPTICS_DYNAMIC_CFG 0x08001398
 
 /*==============================================================================
