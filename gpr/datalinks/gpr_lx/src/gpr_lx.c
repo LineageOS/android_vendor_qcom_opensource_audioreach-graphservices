@@ -198,14 +198,9 @@ void *receiver_thread_loop(void *priv_data)
     void *buf;
     uint32_t *temp;
     gpr_dl_lx_port_t *dl_lx_port = (gpr_dl_lx_port_t *)priv_data;
-    struct pollfd *pfd;
+    struct pollfd pfd[NUM_FDS];
     if (dl_lx_port == NULL) {
         AR_LOG_ERR(LOG_TAG,"%s:%d invalid port instance", __func__, __LINE__);
-        return NULL;
-    }
-    pfd = (struct pollfd *)calloc(NUM_FDS, sizeof(struct pollfd));
-    if (pfd == NULL) {
-        AR_LOG_ERR(LOG_TAG,"%s:%d calloc failed for poll fd", __func__, __LINE__);
         return NULL;
     }
     if (dl_lx_port->drv_fd) {
