@@ -1,0 +1,67 @@
+cc_library_shared {
+    name: "liblx-ar_util",
+    owner: "qti",
+
+    defaults: [
+        "android_hardware_audio_config_defaults",
+    ],
+
+    proprietary: true,
+
+    srcs: [
+        "src/ar_util_data_log.c",
+        "src/ar_util_err_detection.c",
+        "src/ar_util_list.c",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "liblx-osal",
+    ],
+
+    cflags: ["-D_ANDROID_"],
+    header_libs: [
+        "libarosal_headers",
+        "libspf-headers",
+    ],
+    local_include_dirs: [
+        "inc",
+    ],
+
+    export_include_dirs: ["api"],
+}
+
+cc_binary {
+    name: "ar_util_in_test_example",
+    vendor: true,
+
+    srcs: [
+        "test/src/ar_osal_mutex_thread.c",
+        "test/src/ar_osal_signal_thread.c",
+        "test/src/ar_osal_test.c",
+        "test/src/ar_osal_test_service.c",
+        "test/src/ar_test_data_log.c",
+        "test/src/ar_test_file_io.c",
+        "test/src/ar_test_heap.c",
+        "test/src/ar_test_list.c",
+        "test/src/ar_test_log_pkt_op.c",
+        "test/src/ar_test_mem_op.c",
+        "test/src/ar_test_shmem.c",
+        "test/src/ar_test_sleep.c",
+        "test/src/ar_test_string.c",
+    ],
+
+    header_libs: ["libarosal_headers"],
+
+    shared_libs: [
+        "liblog",
+        "liblx-ar_util",
+        "liblx-osal",
+    ],
+
+    local_include_dirs: [
+        "api",
+        "inc",
+        "test/inc",
+    ],
+}
