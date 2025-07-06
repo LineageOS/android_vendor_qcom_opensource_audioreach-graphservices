@@ -3,3 +3,54 @@ cc_library_headers {
     export_include_dirs: ["api"],
     vendor: true,
 }
+
+cc_library_shared {
+    name: "liblx-osal",
+    owner: "qti",
+    vendor: true,
+
+    cflags: [
+        "-D_ANDROID_",
+        "-DAR_OSAL_USE_CUTILS",
+        // "-DAR_OSAL_USE_DYNAMIC_PD",
+        "-DPROPERTY_TRIGGER",
+    ],
+
+    srcs: [
+        "src/linux/ar_osal_file_io.c",
+        "src/linux/ar_osal_heap.c",
+        "src/linux/ar_osal_log.c",
+        "src/linux/ar_osal_mem_op.c",
+        "src/linux/ar_osal_mutex.c",
+        "src/linux/ar_osal_signal.c",
+        "src/linux/ar_osal_sleep.c",
+        "src/linux/ar_osal_string.c",
+        "src/linux/ar_osal_stub_log_pkt_op.c",
+        "src/linux/ar_osal_thread.c",
+        "src/linux/ar_osal_timer.c",
+        "src/linux/qcom/ar_osal_servreg.c",
+        "src/linux/qcom/ar_osal_shmem_db.c",
+        "src/linux/qcom/dyn_pd/ar_osal_dyn_pd.c",
+    ],
+
+    include_dirs: [
+        "system/memory/libion/include",
+        "system/memory/libion/kernel-headers",
+    ],
+
+    local_include_dirs: ["api"],
+
+    export_header_lib_headers: ["libarosal_headers"],
+
+    header_libs: [
+        "audio_kernel_headers",
+        "libarosal_headers",
+        "qti_audio_kernel_uapi",
+    ],
+
+    shared_libs: [
+        "libcutils",
+        "libion",
+        "liblog",
+    ],
+}

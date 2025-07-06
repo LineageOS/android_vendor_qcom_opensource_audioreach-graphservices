@@ -1,0 +1,33 @@
+cc_library_shared {
+    name: "liblx-ar_util",
+    owner: "qti",
+    vendor: true,
+
+    cflags: [
+        "-D_ANDROID_"
+    ],
+
+    srcs: [
+        "src/ar_util_data_log.c",
+        "src/ar_util_err_detection.c",
+        "src/ar_util_list.c",
+    ],
+
+    export_include_dirs: [
+        "api"
+    ],
+
+    local_include_dirs: [
+        "api",
+        "inc",
+    ],
+
+    header_libs: [
+        "libspf-headers",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "liblx-osal",
+    ],
+}

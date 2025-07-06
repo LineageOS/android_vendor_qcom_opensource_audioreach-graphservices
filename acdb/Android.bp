@@ -1,0 +1,113 @@
+cc_library_shared {
+    name: "libar-acdb",
+    owner: "qti",
+    vendor: true,
+
+    cflags: [
+        "-D_ANDROID_",
+    ],
+
+    srcs: [
+        "src/acdb.c",
+        "src/acdb_command.c",
+        "src/acdb_context_mgr.c",
+        "src/acdb_data_proc.c",
+        "src/acdb_delta_file_mgr.c",
+        "src/acdb_delta_parser.c",
+        "src/acdb_file_mgr.c",
+        "src/acdb_heap.c",
+        "src/acdb_init.c",
+        "src/acdb_init_utility.c",
+        "src/acdb_parser.c",
+        "src/acdb_utility.c",
+    ],
+
+    export_include_dirs: [
+        "api",
+        "inc",
+    ],
+
+    local_include_dirs: [
+        "api",
+        "inc",
+    ],
+
+    header_libs: [
+        "libcutils_headers",
+        "libutils_headers",
+    ],
+
+    shared_libs: ["liblx-osal"],
+}
+
+cc_library_shared {
+    name: "libats",
+    owner: "qti",
+    vendor: true,
+
+    cflags: [
+        "-D_ANDROID_",
+        "-DAR_ATS_USE_CUTILS",
+        "-DATS_USES_DUMMY_DIAG",
+    ] + select(soong_config_variable("qtiaudio", "feature_mcs"), {
+        "true": ["-DMCS_ENABLED"],
+        default: [],
+    }),
+
+    srcs: [
+        "ats/adie/common/src/ats_adie_rtc.c",
+        "ats/adie/linux/adie_rtc.c",
+        "ats/fts/common/src/ats_fts.c",
+        "ats/mcs/common/src/ats_mcs.c",
+        "ats/mcs/linux/mcs.c",
+        "ats/online/common/src/ats_online.c",
+        "ats/rtc/common/src/ats_rtc.c",
+        "ats/sockets/linux/src/ar_sockets.cpp",
+        "ats/src/ats.c",
+        "ats/src/ats_command.c",
+        "ats/transports/common/src/ats_transport.c",
+        "ats/transports/diag/linux/actp/src/actp.c",
+        "ats/transports/diag/linux/audtp/src/audtp.c",
+        "ats/transports/tcpip_server/src/tcpip_cmd_server.cpp",
+        "ats/transports/tcpip_server/src/tcpip_socket_util.cpp",
+    ],
+
+    export_include_dirs: [
+        "ats/adie/common/api",
+        "ats/api",
+        "ats/inc",
+        "ats/mcs/common/api",
+    ],
+
+    local_include_dirs: [
+        "ats/adie/common/api",
+        "ats/adie/common/inc",
+        "ats/api",
+        "ats/fts/common/inc",
+        "ats/inc",
+        "ats/mcs/common/api",
+        "ats/mcs/common/inc",
+        "ats/online/common/inc",
+        "ats/rtc/common/inc",
+        "ats/sockets/common/api",
+        "ats/transports/common/api",
+        "ats/transports/diag/linux/actp/inc",
+        "ats/transports/diag/linux/audtp/inc",
+        "ats/transports/diag/linux/inc",
+        "ats/transports/tcpip_server/api",
+        "ats/transports/tcpip_server/inc",
+    ],
+
+    header_libs: [
+        "libcutils_headers",
+        "libutils_headers",
+    ],
+
+    shared_libs: [
+        "libar-acdb",
+        "libar-gsl",
+        "libcutils",
+        "liblx-osal",
+        "libutils",
+    ],
+}

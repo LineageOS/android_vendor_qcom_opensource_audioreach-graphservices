@@ -1,0 +1,49 @@
+cc_library_shared {
+    name: "libar-gpr",
+    owner: "qti",
+    vendor: true,
+
+    cflags: [
+        "-D_ANDROID_",
+        "-DGPR_USE_CUTILS",
+        "-DSESSION_ARRAY_SIZE=200",
+    ],
+
+    srcs: [
+        "core/src/gpr_drv.c",
+        "core/src/gpr_drv_island.c",
+        "core/src/gpr_list.c",
+        "core/src/gpr_list_island.c",
+        "core/src/gpr_main.c",
+        "core/src/gpr_memq.c",
+        "core/src/gpr_memq_island.c",
+        "core/src/hash_based/gpr_session.c",
+        "core/src/hash_based/gpr_session_island.c",
+        "datalinks/gpr_lx/src/gpr_lx.c",
+        "ext/dynamic_allocation/src/gpr_dynamic_allocation.c",
+        "ext/logging/src/gpr_log_generic.c",
+        "ext/logging/stub_src/gpr_log_diag_stub.c",
+        "platform/linux/gpr_init_lx_wrapper.c",
+    ],
+
+    export_include_dirs: ["api"],
+
+    local_include_dirs: [
+        "api",
+        "api/private",
+        "core/inc",
+        "core/inc/ar_utils/generic",
+        "core/src",
+        "datalinks/gpr_lx/inc",
+        "ext/dynamic_allocation/inc",
+        "ext/logging/inc",
+    ],
+
+    header_libs: ["libarosal_headers"],
+
+    shared_libs: [
+        "libcutils",
+        "liblog",
+        "liblx-osal",
+    ],
+}

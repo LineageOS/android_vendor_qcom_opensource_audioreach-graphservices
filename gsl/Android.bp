@@ -1,0 +1,65 @@
+cc_library_shared {
+    name: "libar-gsl",
+    owner: "qti",
+    vendor: true,
+
+    cflags: [
+        "-D_ANDROID_",
+        "-DGSL_DEBUG_ENABLE",
+        "-DGSL_EXT_MEM_CACHE_DISABLE",
+        "-DGSL_LOG_PKT_ENABLE",
+        "-DGSL_PKT_LOG_PATH=\"/data/vendor/audio/gsl_log.bin\"",
+        "-Wno-gnu-designator",
+        "-Wno-shorten-64-to-32",
+        "-Wno-sign-compare",
+        "-Wno-tautological-compare",
+        "-Wno-typedef-redefinition",
+        "-Wno-unused-function",
+        "-Wno-unused-label",
+        "-Wno-unused-local-typedef",
+        "-Wno-unused-parameter",
+        "-Wno-unused-variable",
+    ],
+
+    srcs: [
+        "src/gsl_common.c",
+        "src/gsl_datapath.c",
+        "src/gsl_dynamic_module_mgr.c",
+        "src/gsl_global_persist_cal.c",
+        "src/gsl_graph.c",
+        "src/gsl_hw_rsc_mgr.c",
+        "src/gsl_main.c",
+        "src/gsl_mdf_utils.c",
+        "src/gsl_msg_builder.c",
+        "src/gsl_rtc.c",
+        "src/gsl_rtc_main.c",
+        "src/gsl_shmem_mgr.c",
+        "src/gsl_spf_ss_state.c",
+        "src/gsl_subgraph.c",
+        "src/gsl_subgraph_pool.c",
+    ],
+
+    export_include_dirs: [
+        "api",
+        "hw_rsc_api",
+        "rtc_api",
+    ],
+
+    local_include_dirs: [
+        "api",
+        "hw_rsc_api",
+        "inc",
+        "rtc_api",
+    ],
+
+    header_libs: [
+        "libspf-headers",
+    ],
+
+    shared_libs: [
+        "libar-acdb",
+        "libar-gpr",
+        "liblx-ar_util",
+        "liblx-osal",
+    ],
+}
