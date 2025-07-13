@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe350ac_877c80d8",
+        "filename": "ar_util/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-07-13T11:10:38Z",
+      "side": 1,
+      "message": "needs android_hardware_audio_config_defaults too.",
+      "revId": "0ef2532bdfd08cca74261e2982e901ca395bae16",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
