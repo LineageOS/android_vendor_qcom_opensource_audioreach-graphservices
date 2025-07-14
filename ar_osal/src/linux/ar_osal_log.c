@@ -56,11 +56,11 @@ void ar_log_init(void)
 {
 #ifdef AR_OSAL_USE_CUTILS
     //set this property to change the args debug logging enabled.
-    if(property_get_bool("vendor.audio.args.enable.debug.logs", 0)) {
+    if(property_get_bool("vendor.audio.args.enable.debug.logs", 1)) {
         ar_log_lvl = (AR_CRITICAL|AR_ERROR|AR_INFO|AR_DEBUG);
     }
     //set this property to change the args verbose logging enabled.
-    if(property_get_bool("vendor.audio.args.enable.verbose.logs", 0)) {
+    if(property_get_bool("vendor.audio.args.enable.verbose.logs", 1)) {
         ar_log_lvl = (AR_CRITICAL|AR_ERROR|AR_INFO|AR_DEBUG|AR_VERBOSE);
     }
 #endif
