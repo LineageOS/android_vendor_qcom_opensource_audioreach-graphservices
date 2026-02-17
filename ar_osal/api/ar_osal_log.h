@@ -34,7 +34,7 @@ void ar_log_deinit(void);
 /* NOTE: New line ("\n") escape sequence is not expected to be provided with the end of each log message,
    each platform implementation is expected to support this if not implicitly supported, by default every
    new log message will be on a new line*/
-void ar_log(uint32_t level, const char_t* log_tag, const char_t* file,
+void ar_log(uint32_t level, const char_t* log_tag,
 	const char_t* fn, int32_t ln, const char_t* format, ...);
 
 /* Set log level dynamically */
@@ -47,26 +47,26 @@ void ar_set_log_level(uint32_t level);
 
 #define AR_LOG_VERBOSE(log_tag, ...)                                    \
     if (ar_log_lvl & AR_VERBOSE) {                                    \
-        ar_log(AR_VERBOSE, log_tag, __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__); \
+        ar_log(AR_VERBOSE, log_tag, __FUNCTION__, __LINE__, __VA_ARGS__); \
     }
 
 #define AR_LOG_INFO(log_tag,...)                                     \
     if (ar_log_lvl & AR_INFO) {                                    \
-        ar_log(AR_INFO, log_tag, __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__); \
+        ar_log(AR_INFO, log_tag, __FUNCTION__, __LINE__, __VA_ARGS__); \
     }
 
 #define AR_LOG_DEBUG(log_tag, ...)                                    \
     if (ar_log_lvl & AR_DEBUG) {                                    \
-        ar_log(AR_DEBUG, log_tag, __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__); \
+        ar_log(AR_DEBUG, log_tag, __FUNCTION__, __LINE__, __VA_ARGS__); \
     }
 #define AR_LOG_ERR(log_tag, ...)                                      \
     if (ar_log_lvl & AR_ERROR) {                                    \
-        ar_log(AR_ERROR, log_tag, __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__); \
+        ar_log(AR_ERROR, log_tag, __FUNCTION__, __LINE__, __VA_ARGS__); \
     }
 
 #define AR_LOG_CRITICAL(log_tag, ...)                                    \
     if (ar_log_lvl & AR_CRITICAL) {                                    \
-        ar_log(AR_CRITICAL, log_tag, __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__); \
+        ar_log(AR_CRITICAL, log_tag, __FUNCTION__, __LINE__, __VA_ARGS__); \
     }
 
 #define AR_FATAL_PRIO          (AR_CRITICAL)   /**< Fatal priority debug message. */

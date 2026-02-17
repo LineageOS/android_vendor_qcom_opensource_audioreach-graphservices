@@ -67,7 +67,7 @@ void ar_log_init(void)
 }
 
 _IRQL_requires_max_(DISPATCH_LEVEL)
-void ar_log(uint32_t level, const char_t* log_tag, const char_t* file,
+void ar_log(uint32_t level, const char_t* log_tag,
         const char_t* fn, int32_t ln, const char_t* format, ...)
 {
     va_list ap;
@@ -75,7 +75,7 @@ void ar_log(uint32_t level, const char_t* log_tag, const char_t* file,
     char buf[LOG_BUF_SIZE];
 
     va_start(ap, format);
-    snprintf(buf_temp, LOG_BUF_SIZE, "%s:%s:%d %s", file, fn, ln, format);
+    snprintf(buf_temp, LOG_BUF_SIZE, "%s:%d %s", fn, ln, format);
     vsnprintf(buf, LOG_BUF_SIZE, buf_temp, ap);
     va_end(ap);
 
