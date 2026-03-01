@@ -1,8 +1,5 @@
 cc_library_shared {
     name: "libar-gsl",
-    defaults: [
-        "android_hardware_qtiaudio_config_defaults",
-    ],
     owner: "qti",
     vendor: true,
 
