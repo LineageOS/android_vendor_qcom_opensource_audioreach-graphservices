@@ -18,7 +18,7 @@ $Header: //components/rel/avs.fwk/1.0/api/ar_utils/spf_end_pack.h#7 $
 /* No packing atrributes for Q6 compiler; all structs manually packed */
 #elif defined( __XTENSA__)
 #elif defined( __GNUC__ )
-  __attribute__((packed));
+  __attribute__((packed))
 #elif defined( __arm__ )
 #elif defined( _MSC_VER )
   #pragma pack( pop )
