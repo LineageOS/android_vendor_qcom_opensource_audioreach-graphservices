@@ -10,6 +10,8 @@ cc_library_shared {
         "-DGSL_LOG_PKT_ENABLE",
         "-DGSL_PKT_LOG_PATH=\"/data/vendor/audio/gsl_log.bin\"",
         "-Wno-gnu-designator",
+        "-Wno-gnu-pointer-arith",
+        "-Wno-incompatible-pointer-types",
         "-Wno-shorten-64-to-32",
         "-Wno-sign-compare",
         "-Wno-tautological-compare",
